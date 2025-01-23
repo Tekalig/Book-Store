@@ -1,29 +1,41 @@
-const express = require('express');
-const userController = require('../controllers/userController');
+const express = require("express");
+const {
+  register,
+  login,
+  logout,
+  verify,
+  profile,
+  verify2fa,
+  verifyAccount,
+  sendMeVerificationEmail,
+  changePassword,
+  forgotPassword,
+  resetPassword,
+  toggle2fa,
+} = require("../controllers/userController");
 
 const userRoute = express.Router();
 
-userRoute.post('/register', userController.register);
+userRoute.post("/register", register);
 
-userRoute.post('/login', userController.login);
+userRoute.post("/login", login);
 
-userRoute.post('/logout', userController.logout);
+userRoute.post("/logout", logout);
 
-userRoute.get('/verify', userController.verify);
+userRoute.get("/verify", verify);
 
-userRoute.get('/profile', userController.profile);
+userRoute.get("/profile", profile);
 
-userRoute.post('/verify/2fa', userController.verify2fa);
+userRoute.post("/verify/2fa", verify2fa);
 
-userRoute.post('/verify/account/{token}', userController.verifyAccount);
+userRoute.post("/verify/account/{token}", verifyAccount);
 
-userRoute.post("/sendme-verification-email", userController.sendMeVerificationEmail);
+userRoute.post("/sendme-verification-email", sendMeVerificationEmail);
 
-userRoute.post('/change-password', userController.changePassword);
+userRoute.post("/change-password", changePassword);
 
-userRoute.post('/forgot-password', userController.forgotPassword);
+userRoute.post("/forgot-password", forgotPassword);
 
-userRoute.post('/reset-password/{token}', userController.resetPassword);
+userRoute.post("/reset-password/{token}", resetPassword);
 
-userRoute.post('/toggle/2fa', userController.toggle2fa);
-
+userRoute.post("/toggle/2fa", toggle2fa);
