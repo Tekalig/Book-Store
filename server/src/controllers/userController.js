@@ -1,4 +1,4 @@
-const User = require("../models");
+const User = require("../models/userModel");
 
 const register = async (req, res) => {
   const {
@@ -13,6 +13,11 @@ const register = async (req, res) => {
     bio,
     image,
   } = req.body;
+
+  if(!email || !password || !fname || !lname || !phone || !city || !country || !role || !bio || !image) {
+    return res.status(400).send("All fields are required");
+  }
+
   try {
     const user = await User.create({
       email,
@@ -26,7 +31,9 @@ const register = async (req, res) => {
       bio,
       image,
     });
-    return res.status(201).json({ user });
+    console.log(user.dataValues);
+    const { password:_, ...data } = user.toJSON();
+    return res.status(201).json({ user: data });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -35,11 +42,20 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ where: { email, password } });
-    if (user) {
-      return res.status(200).json({ user });
+    const user = await User.findOne({ where: { email } });
+    
+    if(!user) {
+      return res.status(404).send("Invalid email");
     }
-    return res.status(404).send("User with that email does not exist");
+
+    const isPasswordValid = password === user.password;
+
+    if(!isPasswordValid) {
+    return res.status(404).send("Incorrect password");
+    }
+
+    return res.status(200).send({message:"Logged in successfully", user});
+
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -48,7 +64,7 @@ const login = async (req, res) => {
 const logout = async (req, res) => {
   try {
     res.clearCookie("token");
-    return res.status(200).send("Logged out successfully");
+    return res.status(200).send({message:"Logged out successfully"});
   } catch (error) {
     return res.status(500).send(error.message);
   }
