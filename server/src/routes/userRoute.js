@@ -39,3 +39,5 @@ userRoute.post("/forgot-password", forgotPassword);
 userRoute.post("/reset-password/{token}", resetPassword);
 
 userRoute.post("/toggle/2fa", toggle2fa);
+
+module.exports = userRoute;
