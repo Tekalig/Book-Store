@@ -4,9 +4,9 @@ const router = require('./routes/api');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(express.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api', router);
 
