@@ -1,4 +1,7 @@
 # Book-Store
+
+This is a full-stack project built using the NestJS framework. It serves as a backend for managing a book store, providing APIs for book inventory, user management, and order processing.
+
 ## Project setup
 
 ```bash
