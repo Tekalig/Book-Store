@@ -1,0 +1,188 @@
+{
+  "name": "Complete Bookstore API Implementation",
+  "description": "Bookstore API with all the necessary endpoints for a complete book management system",
+  "columns": [
+    { "name": "📥 Backlog" },
+    { "name": "📋 Spec Ready" },
+    { "name": "👨‍💻 In Development" },
+    { "name": "🔍 In Review" },
+    { "name": "✅ Done" }
+  ],
+  "groups": [
+    {
+      "name": "🔐 Authentication",
+      "tasks": [
+        { "title": "POST /api/user/register", "body": "Endpoint for user registration.", "labels": ["P0", "security"] },
+        { "title": "POST /api/user/login", "body": "Endpoint for user login.", "labels": ["P0", "security"] },
+        { "title": "POST /api/user/logout", "body": "Endpoint for user logout.", "labels": ["P0", "security"] },
+        { "title": "GET /api/user/verify", "body": "Endpoint to verify user.", "labels": ["P0", "security"] },
+        { "title": "POST /api/user/verify/2fa", "body": "Endpoint to verify 2FA.", "labels": ["P0", "security"] },
+        { "title": "POST /api/user/verify/account/{token}", "body": "Endpoint to verify account using a token.", "labels": ["P0", "security"] },
+        { "title": "POST /api/user/change-password", "body": "Endpoint to change user password.", "labels": ["P0", "security"] },
+        { "title": "POST /api/user/forgot-password", "body": "Endpoint to initiate password recovery.", "labels": ["P0", "security"] },
+        { "title": "POST /api/user/reset-password/{token}", "body": "Endpoint to reset password using a token.", "labels": ["P0", "security"] },
+        { "title": "POST /api/user/toggle/2fa", "body": "Endpoint to toggle 2FA for a user.", "labels": ["P0", "security"] },
+        { "title": "GET /api/auth/google", "body": "Endpoint for Google OAuth2 login.", "labels": ["P1", "oauth"] },
+        { "title": "GET /api/auth/facebook", "body": "Endpoint for Facebook OAuth2 login.", "labels": ["P1", "oauth"] },
+        { "title": "GET /api/auth/google/callback", "body": "Endpoint for Google OAuth2 callback.", "labels": ["P1", "oauth"] },
+        { "title": "GET /api/auth/facebook/callback", "body": "Endpoint for Facebook OAuth2 callback.", "labels": ["P1", "oauth"] },
+        { "title": "GET /api/auth/social/failed", "body": "Endpoint for failed social login.", "labels": ["P1", "oauth"] }
+      ]
+    },
+    {
+      "name": "📚 Book Management",
+      "tasks": [
+        { "title": "POST /api/book/create", "body": "Endpoint to create a new book.", "labels": ["P0", "core"] },
+        { "title": "GET /api/book/get-all", "body": "Endpoint to retrieve all books.", "labels": ["P0", "core"] },
+        { "title": "GET /api/book/find/{id}", "body": "Endpoint to find a book by ID.", "labels": ["P0", "core"] },
+        { "title": "DELETE /api/book/delete/{id}", "body": "Endpoint to delete a book by ID.", "labels": ["P0", "core"] },
+        { "title": "PUT /api/book/update-book/{id}", "body": "Endpoint to update a book by ID.", "labels": ["P0", "core"] },
+        { "title": "POST /api/book/upload-audio/{id}", "body": "Endpoint to upload audio for a book.", "labels": ["P1", "media"] },
+        { "title": "GET /api/book/audio/{id}", "body": "Endpoint to retrieve audio for a book by ID.", "labels": ["P1", "media"] },
+        { "title": "GET /api/book/audio-for-logged-author/{id}", "body": "Endpoint to retrieve audio for logged-in author.", "labels": ["P1", "media"] },
+        { "title": "GET /api/book/audio", "body": "Endpoint to retrieve all audio books.", "labels": ["P1", "media"] },
+        { "title": "DELETE /api/book/delete-audio/{id}", "body": "Endpoint to delete audio for a book by ID.", "labels": ["P1", "media"] },
+        { "title": "GET /api/book/audio-for-who-paid/{id}", "body": "Endpoint to retrieve audio for users who paid.", "labels": ["P1", "media"] },
+        { "title": "GET /api/book/between", "body": "Endpoint to retrieve books within a date range.", "labels": ["P1", "search"] },
+        { "title": "GET /api/book/today", "body": "Endpoint to retrieve books added today.", "labels": ["P1", "search"] },
+        { "title": "GET /api/book/last7days", "body": "Endpoint to retrieve books added in the last 7 days.", "labels": ["P1", "search"] },
+        { "title": "GET /api/book/by-status/{status}", "body": "Endpoint to retrieve books by status.", "labels": ["P1", "search"] },
+        { "title": "GET /api/book/most-sold", "body": "Endpoint to retrieve the most sold books.", "labels": ["P1", "search"] },
+        { "title": "GET /api/book/by-authors-id/{id}", "body": "Endpoint to retrieve books by author ID.", "labels": ["P1", "search"] },
+        { "title": "GET /api/book/approved-by-author-id/{id}", "body": "Endpoint to retrieve books approved by author ID.", "labels": ["P1", "search"] },
+        { "title": "GET /api/book/most-reviewed", "body": "Endpoint to retrieve the most reviewed books.", "labels": ["P1", "search"] },
+        { "title": "GET /api/book/top-rated", "body": "Endpoint to retrieve the top-rated books.", "labels": ["P1", "search"] },
+        { "title": "GET /api/book/recommendations", "body": "Endpoint to retrieve book recommendations.", "labels": ["P1", "search"] }
+      ]
+    },
+    {
+      "name": "💰 Orders",
+      "tasks": [
+        { "title": "POST /api/order/purchase/{id}", "body": "Endpoint to purchase an order.", "labels": ["P0", "commerce"] },
+        { "title": "GET /api/order/get-all", "body": "Endpoint to retrieve all orders.", "labels": ["P0", "commerce"] },
+        { "title": "GET /api/order/by-id/{id}", "body": "Endpoint to retrieve an order by ID.", "labels": ["P0", "commerce"] },
+        { "title": "PUT /api/order/update-status/{id}", "body": "Endpoint to update order status by ID.", "labels": ["P0", "commerce"] },
+        { "title": "DELETE /api/order/delete/{id}", "body": "Endpoint to delete an order by ID.", "labels": ["P0", "commerce"] },
+        { "title": "DELETE /api/order/delete-unapproved/{id}", "body": "Endpoint to delete unapproved order by ID.", "labels": ["P0", "commerce"] },
+        { "title": "GET /api/order/logged-user", "body": "Endpoint to retrieve orders for logged-in user.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/approved-logged-user", "body": "Endpoint to retrieve approved orders for logged-in user.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/for-book/{id}", "body": "Endpoint to retrieve orders for a book by ID.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/last7days-approved", "body": "Endpoint to retrieve approved orders in the last 7 days.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/approved-byuser/{id}", "body": "Endpoint to retrieve approved orders by user ID.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/byuser/{id}", "body": "Endpoint to retrieve orders by user ID.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/bystatus/{status}", "body": "Endpoint to retrieve orders by status.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/between", "body": "Endpoint to retrieve orders within a date range.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/approved-between", "body": "Endpoint to retrieve approved orders within a date range.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/today", "body": "Endpoint to retrieve orders placed today.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/ordernumber/{orderNumber}", "body": "Endpoint to retrieve order by order number.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/order/last7days", "body": "Endpoint to retrieve orders placed in the last 7 days.", "labels": ["P1", "analytics"] }
+      ]
+    },
+    {
+      "name": "👥 User Systems",
+      "tasks": [
+        { "title": "GET /api/user/my-profile", "body": "Endpoint to retrieve logged-in user's profile.", "labels": ["P1", "profile"] },
+        { "title": "POST /api/manage-user/register-byreferal/{token}", "body": "Endpoint to register user by referral token.", "labels": ["P1", "profile"] },
+        { "title": "PUT /api/manage-user/update-my-account", "body": "Endpoint to update logged-in user's account.", "labels": ["P1", "profile"] },
+        { "title": "GET /api/manage-user/get-all-users", "body": "Endpoint to retrieve all users.", "labels": ["P1", "profile"] },
+        { "title": "GET /api/manage-user/my-referal", "body": "Endpoint to retrieve logged-in user's referral.", "labels": ["P1", "profile"] },
+        { "title": "DELETE /api/manage-user/delete-my-account", "body": "Endpoint to delete logged-in user's account.", "labels": ["P1", "profile"] },
+        { "title": "GET /api/manage-user/get-user/{id}", "body": "Endpoint to retrieve user by ID.", "labels": ["P1", "profile"] },
+        { "title": "GET /api/manage-user/filter-authors", "body": "Endpoint to filter authors.", "labels": ["P2", "admin"] },
+        { "title": "GET /api/manage-user/filter-allusers", "body": "Endpoint to filter all users.", "labels": ["P2", "admin"] },
+        { "title": "PUT /api/manage-user/toggle/isactive/{id}", "body": "Endpoint to toggle user active status by ID.", "labels": ["P2", "admin"] },
+        { "title": "GET /api/manage-user/not-active-users", "body": "Endpoint to retrieve not active users.", "labels": ["P2", "admin"] },
+        { "title": "GET /api/manage-user/verified-users", "body": "Endpoint to retrieve verified users.", "labels": ["P2", "admin"] },
+        { "title": "PUT /api/manage-user/change-role/{id}", "body": "Endpoint to change user role by ID.", "labels": ["P2", "admin"] },
+        { "title": "GET /api/manage-user/provider/{provider}", "body": "Endpoint to retrieve users by provider.", "labels": ["P2", "admin"] },
+        { "title": "POST /api/manage-user/send-email/{id}", "body": "Endpoint to send email to user by ID.", "labels": ["P2", "admin"] }
+      ]
+    },
+    {
+      "name": "💳 Financial",
+      "tasks": [
+        { "title": "POST /api/account/create", "body": "Endpoint to create a new bank account.", "labels": ["P1", "banking"] },
+        { "title": "GET /api/account/get-all", "body": "Endpoint to retrieve all bank accounts.", "labels": ["P1", "banking"] },
+        { "title": "GET /api/account/by/{id}", "body": "Endpoint to retrieve bank account by ID.", "labels": ["P1", "banking"] },
+        { "title": "PUT /api/account/update/{id}", "body": "Endpoint to update bank account by ID.", "labels": ["P1", "banking"] },
+        { "title": "DELETE /api/account/delete/{id}", "body": "Endpoint to delete bank account by ID.", "labels": ["P1", "banking"] },
+        { "title": "POST /api/subscription/create", "body": "Endpoint to create a new subscription.", "labels": ["P2", "billing"] },
+        { "title": "PUT /api/subscription/update/{id}", "body": "Endpoint to update subscription by ID.", "labels": ["P2", "billing"] },
+        { "title": "GET /api/subscription/get-all", "body": "Endpoint to retrieve all subscriptions.", "labels": ["P2", "billing"] },
+        { "title": "DELETE /api/subscription/delete/{id}", "body": "Endpoint to delete subscription by ID.", "labels": ["P2", "billing"] },
+        { "title": "GET /api/subscription/my/subscription", "body": "Endpoint to retrieve logged-in user's subscription.", "labels": ["P2", "billing"] },
+        { "title": "GET /api/subscription/by-id/{id}", "body": "Endpoint to retrieve subscription by ID.", "labels": ["P2", "billing"] },
+        { "title": "POST /api/subscription-order/purchase", "body": "Endpoint to purchase a subscription order.", "labels": ["P2", "billing"] },
+        { "title": "PUT /api/subscription-order/update-status/{id}", "body": "Endpoint to update subscription order status by ID.", "labels": ["P2", "billing"] },
+        { "title": "GET /api/subscription-order/by/{id}", "body": "Endpoint to retrieve subscription order by ID.", "labels": ["P2", "billing"] }
+      ]
+    },
+    {
+      "name": "💬 Social",
+      "tasks": [
+        { "title": "POST /api/following/follow", "body": "Endpoint to follow a user.", "labels": ["P2", "social"] },
+        { "title": "POST /api/following/unfollow", "body": "Endpoint to unfollow a user.", "labels": ["P2", "social"] },
+        { "title": "GET /api/following/followers/{id}", "body": "Endpoint to retrieve followers of a user by ID.", "labels": ["P2", "social"] },
+        { "title": "GET /api/following/following/{id}", "body": "Endpoint to retrieve users followed by a user by ID.", "labels": ["P2", "social"] },
+        { "title": "GET /api/following/myfollowers", "body": "Endpoint to retrieve logged-in user's followers.", "labels": ["P2", "social"] },
+        { "title": "GET /api/following/amfollowing", "body": "Endpoint to retrieve users followed by logged-in user.", "labels": ["P2", "social"] },
+        { "title": "POST /api/review/create/{id}", "body": "Endpoint to create a review for a book by ID.", "labels": ["P1", "content"] },
+        { "title": "PUT /api/review/update/{id}", "body": "Endpoint to update a review by ID.", "labels": ["P1", "content"] },
+        { "title": "GET /api/review/get-all", "body": "Endpoint to retrieve all reviews.", "labels": ["P1", "content"] },
+        { "title": "DELETE /api/review/delete/{id}", "body": "Endpoint to delete a review by ID.", "labels": ["P1", "content"] },
+        { "title": "GET /api/review/by-userid/{id}", "body": "Endpoint to retrieve reviews by user ID.", "labels": ["P1", "content"] },
+        { "title": "GET /api/review/by-bookid/{id}", "body": "Endpoint to retrieve reviews by book ID.", "labels": ["P1", "content"] },
+        { "title": "GET /api/review/by/{id}", "body": "Endpoint to retrieve review by ID.", "labels": ["P1", "content"] },
+        { "title": "POST /api/comm/create", "body": "Endpoint to create a comment.", "labels": ["P1", "content"] },
+        { "title": "PUT /api/comm/update/{id}", "body": "Endpoint to update a comment by ID.", "labels": ["P1", "content"] },
+        { "title": "DELETE /api/comm/delete/{id}", "body": "Endpoint to delete a comment by ID.", "labels": ["P1", "content"] }
+      ]
+    },
+    {
+      "name": "📊 Analytics",
+      "tasks": [
+        { "title": "GET /api/sales/books/reports/bybookid/{id}", "body": "Endpoint to retrieve sales report by book ID.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/logged-author", "body": "Endpoint to retrieve sales report for logged-in author.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/total-byauthorid/{id}", "body": "Endpoint to retrieve total sales by author ID.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/top-books", "body": "Endpoint to retrieve top-selling books.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/top-sellers", "body": "Endpoint to retrieve top sellers.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/top-buyer", "body": "Endpoint to retrieve top buyer.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/total", "body": "Endpoint to retrieve total sales.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/last7days", "body": "Endpoint to retrieve sales in the last 7 days.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/average", "body": "Endpoint to retrieve average sales.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/last-month", "body": "Endpoint to retrieve sales in the last month.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/last-year", "body": "Endpoint to retrieve sales in the last year.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/this-month", "body": "Endpoint to retrieve sales in this month.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/this-year", "body": "Endpoint to retrieve sales in this year.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sales/books/reports/between", "body": "Endpoint to retrieve sales between dates.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sold-report/between", "body": "Endpoint to retrieve sold report between dates.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sold-report/get-totals", "body": "Endpoint to retrieve total sold report.", "labels": ["P1", "analytics"] },
+        { "title": "GET /api/sold-report/get-all", "body": "Endpoint to retrieve all sold reports.", "labels": ["P1", "analytics"] }
+      ]
+    }
+  ],
+  "automation": {
+    "rules": [
+      {
+        "name": "Start development when assigned",
+        "conditions": [
+          { "assigned": true }
+        ],
+        "actions": [
+          { "set_column": "👨‍💻 In Development" },
+          { "add_label": "active" }
+        ]
+      },
+      {
+        "name": "Move to review when PR created",
+        "conditions": [
+          { "linked_pull_request": "any" }
+        ],
+        "actions": [
+          { "set_column": "🔍 In Review" },
+          { "add_label": "under-review" }
+        ]
+      }
+    ]
+  }
+}
